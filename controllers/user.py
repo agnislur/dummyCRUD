@@ -1,5 +1,5 @@
 from flask import request
-from models.user import User
+from models.user import User, User1
 from extensions import db
 
 def add_user_function():
@@ -7,7 +7,7 @@ def add_user_function():
         name=request.form['name']
         email=request.form['email']
         password= request.form['password']
-        user= User(
+        user= User1(
             name=name,
             email=email,
             password=password
@@ -38,7 +38,7 @@ def delete_user_function(user):
 def register_user_function(name, email, password):
     try:
         # Create a new user object
-        new_user = User(name=name, email=email, password=password)
+        new_user = User1(name=name, email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
         return new_user
@@ -50,6 +50,18 @@ def register_user_function(name, email, password):
 def login_user_function(email, password):
     try:
         user = User.query.filter_by(email=email).first()
+        if user and user.password == password:  # Anda mungkin ingin menggunakan hashing password yang aman di sini
+            return user
+        else:
+            return None
+    except Exception as e:
+        print(e)
+        return None
+
+
+def loginuser_user_function(email, password):
+    try:
+        user = User1.query.filter_by(email=email).first()
         if user and user.password == password:  # Anda mungkin ingin menggunakan hashing password yang aman di sini
             return user
         else:

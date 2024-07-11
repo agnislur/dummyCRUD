@@ -22,28 +22,19 @@
     </script>
   </head>
   <body>
-    
     <div class="my-5 text-center">
-        <button type="button" class="btn btn-primary" >
-            <a href="{{url_for('main.add_user')}}" class="text-white"> Tambahkan Daftar Karyawan </a>
-        </button>
+
+      <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item justify-content-center text-center">
+                <a href="/"> Logout</a>
+            </li>
+        </ol>
+    </nav>
 
         <br/>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item justify-content-center">
-                                <a href="/"> Logout</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
         <div class="w-70 d-flex p-5">
-            
+          
             <table class="table">
                 <thead>
                   <tr>
@@ -75,11 +66,7 @@
                   
                 </tbody>
               </table>
-
         </div>
-
-        
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -34,3 +34,26 @@ def edit_user_function(data):
 def delete_user_function(user):
     db.session.delete(user)
     db.session.commit()
+
+def register_user_function(name, email, password):
+    try:
+        # Create a new user object
+        new_user = User(name=name, email=email, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        return new_user
+    except Exception as e:
+        print(e)
+        return None
+
+
+def login_user_function(email, password):
+    try:
+        user = User.query.filter_by(email=email).first()
+        if user and user.password == password:  # Anda mungkin ingin menggunakan hashing password yang aman di sini
+            return user
+        else:
+            return None
+    except Exception as e:
+        print(e)
+        return None
